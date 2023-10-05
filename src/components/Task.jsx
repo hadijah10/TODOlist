@@ -1,25 +1,26 @@
 import React, { useState } from 'react'
 
-import { Box,Stack,InputBase,styled ,Checkbox } from '@mui/material';
+import { Box,Stack,InputBase,styled ,Checkbox, Typography } from '@mui/material';
 import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 function Task() {
 
-    const [checked,setChecked] = useState(true)
+    const [checked,setChecked] = useState(false)
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const [tasks,setTask] = useState([
-        {"id":1,
-            "data":"Getting an invite for a dribble",
-        "Pinned":false,
-        "memo":null,},
-        {"id":2,
-        "data":"Getting an invite for a dribble",
-    "Pinned":false,
-    "memo":null,},
-    {"id":3,
-            "data":"Getting an invite for a dribble",
-        "Pinned":false,
-        "memo":null,}
+        {id:1,
+            data:"Getting an invite for a dribble",
+        Pinned:false,
+        memo:"one of my goals in 2017",},
+        {id:2,
+        data:"Getting an invite for a dribble",
+         Pinned:false,
+        memo:null,},
+        {id:3,
+          data:"Getting an invite for a dribble",
+        Pinned:false,
+        memo:"its giving",}
     ])
     const Addlist = styled("div")(({})=> ({
         display:"flex",justifyContent:"start",alignItems:"center",gap:"10px",
@@ -29,21 +30,31 @@ function Task() {
        border:"1px solid black",
      
     }))
-
+    const type1 = {color:"#fff",pt:2}
+    const type2 = {color:"#fff"}
   return (
   <>
-  <Stack spaccing={3} sx={{alignItems:"center",minHeight:"60vh",ml:{sm:1,md:3},mr:{sm:3,md:6},p:0,border:"1px solid pink"}}>
-    <Box sx={{display:"flex",justifyContent:'end',alignContent:"center",border:"1px solid white",minWidth:"100%"}}>
-    <Addlist sx={{pl:1.5,border:"1px solid pink",borderRadius:1}}>
+  <Stack spaccing={3} sx={{alignItems:"center",minHeight:"60vh",ml:{sm:1,md:3},mr:{sm:3,md:6}}}>
+    <Box sx={{display:"flex",justifyContent:'end',alignContent:"center",minWidth:"100%"}}>
+    <Addlist sx={{pl:1.5,borderRadius:1}}>
         <FormatAlignLeftIcon color="#757575" sx={{fontSize:"medium",}}/>
         <InputBase sx={{ color:"#757575"}}placeholder='Add a task'/>
     </Addlist>
     </Box>
-    <Stack spacing={2} direction="row" sx={{border:"1px solid red",width:"100%",minHeight:"60vh"}}>
+    <Stack spacing={2}  sx={{pt:2,width:"100%",minHeight:"60vh"}}>
     {tasks && tasks.map((task)=> {
-        <Box spacing={2} key={task.id}>,
-            <Checkbox checked={checked}onChange={(e)=> {setChecked(e.target.checked)}} />
+        return(
+            <Box spacing={2} key={task.id} sx={{display:"flex",justifyContent:"space-between",pr:2,alignItems:"start"}} >
+            <Box sx={{display:"flex",justifyContent:"center",alignItems:"start"}}>
+            <Checkbox sx={{pr:{sm:1,md:2},color:"#424242"}} size="small" checked={checked}onChange={(e)=> {setChecked(e.target.checked)}} />
+            <Stack spacing={1} sx={{pt:1.3,justifyContent:"end"}}>
+                <Typography variant='p' component="p" sx={{color:"#fff",fontSize:14}}>{task.data}</Typography>
+                <Typography variant='p' component="p" sx={{color:"#424242",fontSize:14}}>{task.memo}</Typography>
+            </Stack>
+            </Box>
+            <MoreHorizIcon sx={{color:"#fff"}}/>
         </Box>
+        )
     })}
     </Stack>
   </Stack>
