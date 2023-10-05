@@ -4,7 +4,7 @@ import { Box,Stack,InputBase,styled ,Checkbox } from '@mui/material';
 import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
 
 function Task() {
-    const [isPined,setPin] = useState(false)
+
     const [checked,setChecked] = useState(true)
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const [tasks,setTask] = useState([
