@@ -3,6 +3,7 @@ import React from 'react';
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
+const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 const UserBox = styled(Box)({
     display:'flex',
     alignItems:'center',
@@ -20,8 +21,8 @@ function Carousel() {
         <UserBox>
             <ArrowBackIosNewOutlinedIcon />
             <Stack direction="column" textAlign="center" justifyContent="center" spacing={1}>
-                <Typography variant="h4" component="h4" >Thursday</Typography>
-                <Typography variant='h7' component="h6">Mar 23, 2017</Typography>
+                <Typography variant="h4" component="h4" sx={{color:"#fff"}} >Thursday</Typography>
+                <Typography variant='h6' component="h6">Mar 23, 2017</Typography>
             </Stack>
             <ArrowForwardIosIcon />
         </UserBox>
