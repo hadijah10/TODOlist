@@ -15,7 +15,7 @@ function TodoForm({ updateTask }) {
   });
   const listItem = watch("todoitem");
   const onSubmit = () => {
-    let item = { id: v4(), data: listItem, Pinned: false, memo: null };
+    let item = { id: v4(), data: listItem, pinned: false, memo: null };
     updateTask(item);
   };
 

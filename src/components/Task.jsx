@@ -17,6 +17,7 @@ function Task() {
   const [tasks, setTask] = useState(
     JSON.parse(localStorage.getItem("Tasks")) || []
   );
+
   useEffect(() => {
     tasks
       ? localStorage.setItem("Tasks", JSON.stringify(tasks))
@@ -24,15 +25,20 @@ function Task() {
   }, [tasks]);
   const updateTask = (item) => {
     // if (!tasks) return;
-    setTask((prev) => [...prev, item]);
+    setTask([...tasks, item]);
   };
   const PinTask = (index) => {
-    if (!tasks) return;
+    console.log(index);
     setTask(
-      tasks.map((data) => {
-        data?.id === index ? { ...tasks, pinned: !data.pinned } : tasks;
-      })
+      tasks.map(
+        (data) =>
+          //data?.id === index
+          (tasks[index] = { ...data, pinned: !data.pinned })
+      )
     );
+  };
+  const DeleteTask = (index) => {
+    setTask(tasks.filter((data) => data?.id !== index));
   };
 
   return (
@@ -59,7 +65,8 @@ function Task() {
             <TodoForm updateTask={updateTask} />
           </Addlist>
         </Box>
-        <TodoList tasks={tasks} PinTask={PinTask} />
+
+        <TodoList tasks={tasks} PinTask={PinTask} DeleteTask={DeleteTask} />
       </Stack>
     </>
   );

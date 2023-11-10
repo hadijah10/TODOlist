@@ -1,12 +1,15 @@
-import React from 'react'
-import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
+import React from "react";
+import IconButton from "@mui/material/IconButton";
+import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 
-function BackArrow() {
+function BackArrow({ handleBackward }) {
   return (
     <div>
-        <ArrowBackIosNewOutlinedIcon/>
+      <IconButton onClick={handleBackward}>
+        <ArrowBackIosNewOutlinedIcon />
+      </IconButton>
     </div>
-  )
+  );
 }
 
 export default BackArrow;
